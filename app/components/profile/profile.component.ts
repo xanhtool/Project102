@@ -7,11 +7,43 @@ import 'rxjs/add/operator/map';
   templateUrl: 'app/components/profile/profile.component.html',
 })
 export class ProfileComponent {
+  user = [];
+  repos = [];
+  username:string;
+
   constructor (private githubService: GithubService ) {
+    this.user = false;
+    // this.githubService
+    // .getUser()
+    // .subscribe( user => {
+    //   // console.log(user);
+    //   this.user = user;
+    // });
+    //
+    // this.githubService
+    // .getRepos()
+    // .subscribe( repos => {
+    //   // console.log(repos);
+    //   this.repos = repos;
+    // });
+  }
+
+  searchUser(){
+    // console.log('it work');
+    this.githubService.updateUser(this.username);
+
     this.githubService
     .getUser()
     .subscribe( user => {
-      console.log(user);
+      // console.log(user);
+      this.user = user;
+    });
+
+    this.githubService
+    .getRepos()
+    .subscribe( repos => {
+      // console.log(repos);
+      this.repos = repos;
     });
   }
 }
