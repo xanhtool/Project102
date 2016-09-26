@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
   templateUrl: 'app/components/profile/profile.component.html',
 })
 export class ProfileComponent {
-  user = [];
+  user;
   repos = [];
   username:string;
 
